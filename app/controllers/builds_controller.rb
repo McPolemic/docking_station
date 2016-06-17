@@ -28,6 +28,7 @@ class BuildsController < ApplicationController
 
     respond_to do |format|
       if @build.save
+        BuildWorker.perform_async(@build.id)
         format.html { redirect_to @build, notice: 'Build was successfully created.' }
         format.json { render :show, status: :created, location: @build }
       else
