@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @build.name %>
+</p>
+
+<p>
+  <strong>Commit:</strong>
+  <%= @build.commit %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @build.project_id %>
+</p>
+
+<p>
+  <strong>Build status:</strong>
+  <%= @build.build_status %>
+</p>
+
+<p>
+  <strong>Build output:</strong>
+  <%= @build.build_output %>
+</p>
+
+<p>
+  <strong>Test status:</strong>
+  <%= @build.test_status %>
+</p>
+
+<p>
+  <strong>Test output:</strong>
+  <%= @build.test_output %>
+</p>
+
+<p>
+  <strong>Deployment status:</strong>
+  <%= @build.deployment_status %>
+</p>
+
+<p>
+  <strong>Deployment output:</strong>
+  <%= @build.deployment_output %>
+</p>
+
+<%= link_to 'Edit', edit_build_path(@build) %> |
+<%= link_to 'Back', builds_path %>

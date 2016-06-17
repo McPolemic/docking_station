@@ -1,0 +1,53 @@
+<%= form_for(@build) do |f| %>
+  <% if @build.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@build.errors.count, "error") %> prohibited this build from being saved:</h2>
+
+      <ul>
+      <% @build.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :commit %><br>
+    <%= f.text_field :commit %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.number_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :build_status %><br>
+    <%= f.check_box :build_status %>
+  </div>
+  <div class="field">
+    <%= f.label :build_output %><br>
+    <%= f.text_field :build_output %>
+  </div>
+  <div class="field">
+    <%= f.label :test_status %><br>
+    <%= f.check_box :test_status %>
+  </div>
+  <div class="field">
+    <%= f.label :test_output %><br>
+    <%= f.text_field :test_output %>
+  </div>
+  <div class="field">
+    <%= f.label :deployment_status %><br>
+    <%= f.check_box :deployment_status %>
+  </div>
+  <div class="field">
+    <%= f.label :deployment_output %><br>
+    <%= f.text_field :deployment_output %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

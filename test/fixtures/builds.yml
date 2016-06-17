@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  commit: MyString
+  project_id: 1
+  build_status: false
+  build_output: MyString
+  test_status: false
+  test_output: MyString
+  deployment_status: false
+  deployment_output: MyString
+
+two:
+  name: MyString
+  commit: MyString
+  project_id: 1
+  build_status: false
+  build_output: MyString
+  test_status: false
+  test_output: MyString
+  deployment_status: false
+  deployment_output: MyString

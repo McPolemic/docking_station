@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  has_many :builds, dependent: :destroy
+
   def tag_id(commit)
     "#{name}:#{commit}"
   end
