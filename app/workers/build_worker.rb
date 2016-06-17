@@ -16,6 +16,8 @@ class BuildWorker
       build.build_status, build.build_output = run_command( command )
       build.save
     end
+
+    TestWorker.perform_async(build_id)
   end
 
   def run_command(command)
