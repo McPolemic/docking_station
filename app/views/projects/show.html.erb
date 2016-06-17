@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Environment:</strong>
+  <%= @project.environment %>
+</p>
+
+<p>
+  <strong>Test command:</strong>
+  <%= @project.test_command %>
+</p>
+
+<p>
+  <strong>Deploy command:</strong>
+  <%= @project.deploy_command %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
