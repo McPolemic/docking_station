@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Project URL</th>
       <th>Environment</th>
       <th>Test command</th>
       <th>Deploy command</th>
@@ -17,6 +18,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
+        <td><%= project.project_url %></td>
         <td><%= project.environment %></td>
         <td><%= project.test_command %></td>
         <td><%= project.deploy_command %></td>
