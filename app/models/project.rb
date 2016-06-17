@@ -10,6 +10,6 @@ class Project < ActiveRecord::Base
   end
 
   def test_command_string(commit)
-    "docker exec -it --rm #{tag_id(commit)} #{test_command}"
+    "docker run -it --rm #{tag_id(commit)} #{test_command}"
   end
 end

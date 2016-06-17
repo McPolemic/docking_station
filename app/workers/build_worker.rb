@@ -7,8 +7,13 @@ class BuildWorker
     project = build.project
 
     Dir.mktmpdir do |temp_dir|
-      logger.info "Running 'git clone #{project.url} #{temp_dir} && cd #{temp_dir} && #{project.build_command_string(build.commit)}'"
-      build.build_status, build.build_output = run_command( "git clone #{project.url} #{temp_dir} && cd #{temp_dir} && #{project.build_command_string(build.commit)}" )
+      command = "git clone #{project.url} #{temp_dir} && cd #{temp_dir} && #{project.build_command_string(build.commit)}"
+      logger.info "Running '#{command}'"
+
+      build.build_output = "Building..."
+      build.save
+
+      build.build_status, build.build_output = run_command( command )
       build.save
     end
   end
