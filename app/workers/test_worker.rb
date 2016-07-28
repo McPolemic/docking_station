@@ -6,7 +6,7 @@ class TestWorker
 
     command = "docker run -dP #{project.tag_id(build.commit)}" #{project.test_command_string(build.commit)}"
 
-    build.test_output = "Starting up server..."
+    build.test_output = "Starting up server...\n"
     build.save
 
     status, container_id = run_command( command )
@@ -17,8 +17,7 @@ class TestWorker
       return
     end
 
-    build.test_output = "Testing..."
-    build.save
+    build.test_output = "Testing...\n"; build.save
 
     command = "docker exec -it #{container_id} #{project.test_command}"
     build.test_status, build.test_output = run_command(command)
