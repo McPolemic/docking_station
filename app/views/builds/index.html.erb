@@ -9,11 +9,8 @@
       <th>Commit</th>
       <th>Project</th>
       <th>Build status</th>
-      <th>Build output</th>
       <th>Test status</th>
-      <th>Test output</th>
       <th>Deployment status</th>
-      <th>Deployment output</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,11 +22,8 @@
         <td><%= build.commit %></td>
         <td><%= build.project_id %></td>
         <td><%= build.build_status %></td>
-        <td><%= build.build_output %></td>
         <td><%= build.test_status %></td>
-        <td><%= build.test_output %></td>
         <td><%= build.deployment_status %></td>
-        <td><%= build.deployment_output %></td>
         <td><%= link_to 'Show', build %></td>
         <td><%= link_to 'Edit', edit_build_path(build) %></td>
         <td><%= link_to 'Destroy', build, method: :delete, data: { confirm: 'Are you sure?' } %></td>
