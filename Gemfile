@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sidekiq', '~> 4.1.2'
 gem 'foreman', '~> 0.78.0'
+gem 'sinatra', '~> 1.4.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

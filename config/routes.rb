@@ -1,8 +1,17 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'projects#index'
 
-  resources :builds
+  resources :builds do
+    member do
+      post :rebuild
+    end
+  end
+
   resources :projects
+
+  mount Sidekiq::Web => '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
