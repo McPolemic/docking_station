@@ -4,12 +4,12 @@ class TestWorker
     build = Build.find(build_id)
     project = build.project
 
-    command = "docker run -dP #{project.tag_id(build.commit)}" #{project.test_command_string(build.commit)}"
+    command = "docker run -dP #{project.tag_id(build.commit)}"
 
     build.test_output = "Starting up server...\n"
     build.save
 
-    status, container_id = run_command( command )
+    status, container_id = run_command( command ) {}
 
     if status == false
       build.test_output = "Running server failed"
@@ -20,15 +20,25 @@ class TestWorker
     build.test_output = "Testing...\n"; build.save
 
     command = "docker exec -it #{container_id} #{project.test_command}"
-    build.test_status, build.test_output = run_command(command)
-    build.save
+    build.test_status, build.test_output = run_command(command) { |line| build.test_output << line; logger.debug(line); build.save }
+    if build.test_status == false
+      build.test_output << "Tests for #{project.name}-#{build.commit} failed"
+      build.save
+    end
   end
 
   def run_command(command)
-    logger.info "Running '#{command}'"
-    output = %x[ #{command} ]
+    output = []
+
+    IO.popen(command) do |block|
+      block.each do |line|
+        yield line
+        output << line
+      end
+    end
+
     status = $? == 0
 
-    [status, output.strip]
+    [status, output.join("\n").strip]
   end
 end
