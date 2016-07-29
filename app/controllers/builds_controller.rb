@@ -1,5 +1,5 @@
 class BuildsController < ApplicationController
-  before_action :set_build, only: [:show, :edit, :update, :destroy]
+  before_action :set_build, only: [:show, :edit, :update, :destroy, :rebuild]
 
   # GET /builds
   # GET /builds.json
@@ -35,6 +35,16 @@ class BuildsController < ApplicationController
         format.html { render :new }
         format.json { render json: @build.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def rebuild
+    @build.clear!
+
+    respond_to do |format|
+      BuildWorker.perform_async(@build.id)
+      format.html { redirect_to @build, notice: 'Build was successfully created.' }
+      format.json { render :show, status: :created, location: @build }
     end
   end
 

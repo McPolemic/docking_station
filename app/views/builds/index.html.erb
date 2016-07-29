@@ -24,6 +24,7 @@
         <td><%= build.build_status %></td>
         <td><%= build.test_status %></td>
         <td><%= build.deployment_status %></td>
+        <td><%= link_to 'Rebuild', rebuild_build_path(build), method: :post %></td>
         <td><%= link_to 'Show', build %></td>
         <td><%= link_to 'Edit', edit_build_path(build) %></td>
         <td><%= link_to 'Destroy', build, method: :delete, data: { confirm: 'Are you sure?' } %></td>
