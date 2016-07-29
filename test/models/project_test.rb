@@ -20,13 +20,4 @@ class ProjectTest < ActiveSupport::TestCase
 
     assert_equal @project.build_command_string(commit), expected
   end
-
-  test "test_command_string" do
-    commit = "8675309"
-    @project.test_command = "test this"
-
-    expected = "docker exec -it --rm NewService:8675309 test this"
-
-    assert_equal @project.test_command_string(commit), expected
-  end
 end

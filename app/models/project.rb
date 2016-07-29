@@ -8,8 +8,4 @@ class Project < ActiveRecord::Base
   def build_command_string(commit)
     "docker build -t #{tag_id(commit)} ."
   end
-
-  def test_command_string(commit)
-    "docker run -it --rm #{tag_id(commit)} #{test_command}"
-  end
 end
