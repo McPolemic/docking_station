@@ -1,10 +1,22 @@
 require File.expand_path('../boot', __FILE__)
+require 'octokit'
+require 'dotenv'
 
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+Dotenv::Railtie.load
+
+GITHUB_ACCESS_TOKEN = ENV['GITHUB_ACCESS_TOKEN']
+GITHUB_API_ENDPOINT = ENV['GITHUB_API_ENDPOINT']
+
+Octokit.configure do |config|
+  config.api_endpoint = GITHUB_API_ENDPOINT
+  config.access_token = GITHUB_ACCESS_TOKEN
+end
 
 module DockingStation
   class Application < Rails::Application
