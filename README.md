@@ -22,6 +22,9 @@ $ bundle exec foreman start
 * It's likely cleaner to just create a new build on rebuild and redirect (prompt for redirect? "There's a newer build here.")
     * That keeps our historical output for builds
 
+* Ability to schedule recurring builds
+    * Integration tests (know when a service changes their contract)
+
 * Accept GitHub webhooks and automatically create projects/builds
     * Git clone project to temp directory
     * Read in .docking_station.yml
